@@ -35,6 +35,7 @@ class JobSpider(scrapy.Spider):
             for job in jobs.get('jobs', []):
                 data = job.get('data', {})
                 item = {}
+                item['req_id'] = data.get('req_id')
                 item['languages'] = data.get('languages')
                 item['title'] = data.get('title')
                 item['description'] = data.get('description')

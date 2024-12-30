@@ -30,6 +30,8 @@ class MongoPipeline:
     def close_spider(self, spider):
         self.client.close()
 
+    # Prevents duplications
     def process_item(self, item, spider):
-        self.db[self.COLLECTION_NAME].insert_one(ItemAdapter(item).asdict())
+        #self.db[self.COLLECTION_NAME].insert_one(ItemAdapter(item).asdict())
+        self.db[self.COLLECTION_NAME].replace_one({'req_id': item['req_id']}, dict(item), upsert=True)
         return item
