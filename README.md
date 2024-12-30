@@ -33,4 +33,36 @@ Query is a simple query for testing if scraped data send to the database.
 
 If you want to test it with external connection these lines can be used:
 
+After, 
+```
+docker compose up
+```
+Open another terminal to externally connect the database:
+```
+docker exec -it jobs_project-mongo-1 sh
+```
+Open mongosh:
+```
+mongosh
+```
+To see existing databases:
+```
+show dbs
+```
+Enter the database:
+```
+use jobs_db
+```
+To see existing collections:
+```
+show collections
+```
+To see all data:
+```
+db.jobs.find()
+```
+To see the number of documents:
+```
+db.jobs.countDocuments()
+```
 
